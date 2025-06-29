@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs - My Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="index.html" id="logo">My Journal</a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">All Blogs</a></li>
+                    <li><a href="portfolio.html">My Portfolio</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="#subscribe">Subscribe</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <header class="page-header">
+                <h1>All Blog Posts</h1>
+                <p>Explore thoughts, stories, and reflections.</p>
+            </header>
+
+            <section id="blog-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="philosophy">Philosophy</button>
+                <button class="filter-btn" data-filter="marketing">Marketing</button>
+                <button class="filter-btn" data-filter="personal">Personal</button>
+                <button class="filter-btn" data-filter="stories">Stories</button>
+            </section>
+
+            <section id="blog-grid-container">
+                <div class="blog-grid">
+                    <!-- Sample Blog Post 1 -->
+                    <article class="blog-post-item" data-category="philosophy">
+                        <img src="https://via.placeholder.com/400x250/ccc/808080?text=Philosophy+Post" alt="Blog Post 1 Banner">
+                        <div class="post-content">
+                            <h3><a href="post.html">On the Nature of Time</a></h3>
+                            <p class="post-meta">Category: Philosophy | Oct 26, 2023</p>
+                            <p class="post-snippet">A brief exploration into how we perceive and interact with the elusive concept of time, questioning its linear flow and our place within it...</p>
+                            <a href="post.html" class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Sample Blog Post 2 -->
+                    <article class="blog-post-item" data-category="marketing">
+                        <img src="https://via.placeholder.com/400x250/ddd/808080?text=Marketing+Post" alt="Blog Post 2 Banner">
+                        <div class="post-content">
+                            <h3><a href="post.html">The Art of Storytelling in Marketing</a></h3>
+                            <p class="post-meta">Category: Marketing | Oct 24, 2023</p>
+                            <p class="post-snippet">How narratives shape brands and connect with audiences on a deeper level, turning customers into advocates through compelling stories...</p>
+                            <a href="post.html" class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Sample Blog Post 3 -->
+                    <article class="blog-post-item" data-category="personal">
+                        <img src="https://via.placeholder.com/400x250/eee/808080?text=Personal+Post" alt="Blog Post 3 Banner">
+                        <div class="post-content">
+                            <h3><a href="post.html">A Walk in the Autumn Woods</a></h3>
+                            <p class="post-meta">Category: Personal | Oct 22, 2023</p>
+                            <p class="post-snippet">Reflections from a solitary walk, where fallen leaves whispered tales of change, impermanence, and the beauty of letting go...</p>
+                            <a href="post.html" class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Sample Blog Post 4 -->
+                    <article class="blog-post-item" data-category="stories">
+                        <img src="https://via.placeholder.com/400x250/cce/808080?text=Story+Post" alt="Blog Post 4 Banner">
+                        <div class="post-content">
+                            <h3><a href="post.html">The Lighthouse Keeper's Tale</a></h3>
+                            <p class="post-meta">Category: Stories | Oct 20, 2023</p>
+                            <p class="post-snippet">A short story about an old lighthouse keeper, the sea, and a secret kept for generations, echoing themes of solitude and duty...</p>
+                            <a href="post.html" class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </article>
+                     <!-- Sample Blog Post 5 -->
+                    <article class="blog-post-item" data-category="philosophy">
+                        <img src="https://via.placeholder.com/400x250/dcd/808080?text=Philosophy+Again" alt="Blog Post 5 Banner">
+                        <div class="post-content">
+                            <h3><a href="post.html">The Illusion of Certainty</a></h3>
+                            <p class="post-meta">Category: Philosophy | Oct 18, 2023</p>
+                            <p class="post-snippet">Exploring the human need for certainty in an inherently uncertain world, and the freedom found in embracing ambiguity...</p>
+                            <a href="post.html" class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Name - A Personal Journey</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Title - My Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="index.html" id="logo">My Journal</a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">All Blogs</a></li>
+                    <li><a href="portfolio.html">My Portfolio</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="#subscribe">Subscribe</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <article class="blog-post-full container">
+            <header class="post-full-header">
+                <img src="https://via.placeholder.com/1200x400/ddd/808080?text=Blog+Post+Banner" alt="Blog Post Banner" class="post-full-banner">
+                <h1 class="post-full-title">On the Nature of Time</h1>
+                <p class="post-full-meta">
+                    Published on <time datetime="2023-10-26">October 26, 2023</time> | 
+                    Category: <a href="blog.html?filter=philosophy">Philosophy</a> | 
+                    Estimated Reading Time: 5 min
+                </p>
+            </header>
+
+            <section class="post-full-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                
+                <p>Suspendisse potenti. Mauris velelit sapien. Vivamus eget facilisis lectus. Curabitur quis nisi id ligula efficitur maximus. Integer in metus nec justo pharetra lacinia. Nullam ac urna eu felis tristique commodo.</p>
+
+                <h2>A Deeper Dive into Temporal Mechanics</h2>
+                <p>Phasellus laoreet lorem vel dolor tempus vehicula. Integer tincidunt odio eget Rerum Novarum. Quisque vitae semper ex. Nullam feugiat ultricies periodontales. Etiam vel lacus vel nisi vehicula feugiat ac id orci.</p>
+                
+                <blockquote>
+                    "Time is an illusion. Lunchtime doubly so."
+                    <footer>- Douglas Adams</footer>
+                </blockquote>
+
+                <p>Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat.</p>
+
+                <hr class="section-break">
+
+                <h2>Concluding Thoughts</h2>
+                <p>Vivamus suscipit tortor eget felis porttitor volutpat. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
+                
+                <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec rutrum congue leo eget malesuada. Nulla porttitor accumsan tincidunt.</p>
+            </section>
+
+            <section class="related-posts">
+                <h2>Related Posts</h2>
+                <div class="related-posts-grid">
+                    <article class="related-post-item">
+                        <img src="https://via.placeholder.com/300x180/eee/808080?text=Related+1" alt="Related Post 1">
+                        <h3><a href="#">The Illusion of Certainty</a></h3>
+                        <p>Exploring the human need for certainty...</p>
+                    </article>
+                    <article class="related-post-item">
+                        <img src="https://via.placeholder.com/300x180/e0e0e0/808080?text=Related+2" alt="Related Post 2">
+                        <h3><a href="#">Philosophical Musings on Coffee</a></h3>
+                        <p>The quiet philosophy brewed in the dawn...</p>
+                    </article>
+                    <article class="related-post-item">
+                        <img src="https://via.placeholder.com/300x180/f0f0f0/808080?text=Related+3" alt="Related Post 3">
+                        <h3><a href="#">Existentialism and the Everyday</a></h3>
+                        <p>Finding meaning in mundane moments...</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Optional Comment Section (Placeholder) -->
+            <section id="comments-section">
+                <h2>Comments (3)</h2>
+                <div class="comment-list">
+                    <div class="comment">
+                        <p class="comment-author">Jane Doe</p>
+                        <p class="comment-date">October 27, 2023</p>
+                        <p>This was a fascinating read! Really made me think about my own perception of time.</p>
+                    </div>
+                    <div class="comment">
+                        <p class="comment-author">John Smith</p>
+                        <p class="comment-date">October 28, 2023</p>
+                        <p>Great points, especially the Douglas Adams quote! Always a classic.</p>
+                    </div>
+                </div>
+                <form id="comment-form">
+                    <h3>Leave a Comment</h3>
+                    <div>
+                        <label for="comment-name">Name:</label>
+                        <input type="text" id="comment-name" name="comment-name" required>
+                    </div>
+                    <div>
+                        <label for="comment-email">Email (optional):</label>
+                        <input type="email" id="comment-email" name="comment-email">
+                    </div>
+                    <div>
+                        <label for="comment-text">Comment:</label>
+                        <textarea id="comment-text" name="comment-text" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Post Comment</button>
+                </form>
+            </section>
+
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Name - A Personal Journey</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
