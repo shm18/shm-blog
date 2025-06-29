@@ -1,872 +1,877 @@
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;700&family=Merriweather:wght@400;700&display=swap');
+/* CSS FOUNDATION - DARK & MOODY THEME */
 
-/* Basic Reset */
+/* 1. Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap');
+
+/*
+Font-family reference:
+font-family: 'Lora', serif;
+font-family: 'Inter', sans-serif;
+*/
+
+/* 2. CSS Variables (Color Palette) */
+:root {
+    --bg-color: #36454F; /* Charcoal Grey */
+    --text-color-body: #C9C0BB; /* Pale Silver */
+    --text-color-headings: #EAEAEA; /* Off-white */
+    --accent-color: #488A99; /* Muted Teal */
+    --accent-color-rgb: 72, 138, 153; /* Muted Teal as RGB */
+    --accent-color-hover: #5A9FAA; /* Slightly lighter teal for hover */
+    --border-color: #4A5A6A; /* Darker grey for subtle borders */
+    --card-bg-color: #3E4F5E; /* Slightly lighter charcoal for cards/sections */
+
+    --font-heading: 'Lora', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --container-width: 960px;
+    --header-height: 70px;
+}
+
+/* 3. Basic Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px; /* Base font size */
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Inter', sans-serif; /* Default body font */
-    background-color: #fdf6e3; /* Parchment background */
-    color: #333; /* Ink blue/gray text */
-    line-height: 1.6;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color-body);
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+.site-main {
+    flex-grow: 1; /* Allows main content to push footer down */
+    padding: 30px 0; /* Add some general padding to main content area */
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif; /* Headings font */
-    color: #004080; /* Ink blue */
-    margin-bottom: 0.5em;
+    font-family: var(--font-heading);
+    color: var(--text-color-headings);
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1.25em;
 }
 
 a {
-    color: #800000; /* Muted accent color (maroon/dark red as an example) */
+    color: var(--accent-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-a:hover {
+a:hover, a:focus {
+    color: var(--accent-color-hover);
     text-decoration: underline;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
+/* Individual Blog Post Page Styles */
+.container-narrow { 
+    max-width: 720px; 
+    margin-left: auto;
+    margin-right: auto;
+    /* Padding is handled by .site-main or the .post-full-content card itself */
 }
 
-header {
-    background: #fffaf0; /* Slightly off-white for header/footer if needed */
-    padding: 1rem 0;
-    border-bottom: 1px solid #ddd;
-}
-
-nav ul {
-    list-style-type: none;
-    text-align: center;
-    /* display: flex; Flexbox for nav items container below */
-    /* justify-content: space-between; */
-    /* align-items: center; */
-}
-
-/* Navigation container within header to manage flex layout */
-nav .container { /* Apply flex to the container inside nav */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-}
-
-
-#logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8em;
-    color: #004080; /* Ink blue */
-    font-weight: bold;
-}
-
-nav ul {
-    list-style-type: none;
-    /* text-align: center; */ /* No longer needed with flex */
-}
-
-nav ul li {
-    display: inline;
-    margin-left: 25px; /* Spacing between nav items */
-}
-
-nav ul li a {
-    font-weight: bold;
-    font-size: 1em;
-    color: #004080; /* Ink blue for nav links */
-    padding-bottom: 5px; /* For underline effect on hover */
-    transition: color 0.3s ease, border-bottom-color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #800000; /* Muted accent color on hover */
-    text-decoration: none; /* Remove default underline */
-    border-bottom: 2px solid #800000; /* Custom underline effect */
-}
-
-
-main {
-    padding: 20px 0;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #fffaf0;
-    border-top: 1px solid #ddd;
-    margin-top: 30px;
-    font-size: 0.9em;
-}
-
-/* Homepage Specific Styles */
-#poetic-intro {
-    text-align: center;
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #fffef7; /* Slightly different cream for emphasis */
-    border-left: 3px solid #800000; /* Muted accent border */
-}
-
-#poetic-intro h2 {
-    margin-bottom: 15px;
-}
-
-#poetic-intro p {
-    font-size: 1.2em;
-    font-family: 'Merriweather', serif;
-    line-height: 1.8;
-    color: #555;
-}
-
-/* Featured Blogs Grid */
-#featured-blogs {
-    margin-bottom: 40px;
-}
-
-#featured-blogs h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.featured-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-}
-
-.featured-post {
-    background: #fffaf0;
-    border: 1px solid #eee;
+.post-full-content { 
+    background-color: var(--card-bg-color); 
+    padding: 30px 40px; 
     border-radius: 8px;
-    overflow: hidden; /* Ensures image corners are rounded if image is direct child */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    margin-bottom: 30px; /* Space before potential footer elements if any within container-narrow */
 }
 
-.featured-post:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.post-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.featured-post img {
+.post-banner-image { 
     width: 100%;
-    height: 200px; /* Fixed height for consistency */
-    object-fit: cover; /* Ensures image covers the area well */
-    display: block;
-}
-
-.featured-post h3 {
-    font-size: 1.5em;
-    margin: 15px;
-    color: #004080;
-}
-
-.featured-post .post-category {
-    margin: 0 15px 10px 15px;
-    font-size: 0.85em;
-    color: #800000; /* Muted accent */
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.featured-post p {
-    margin: 0 15px 15px 15px;
-    font-size: 0.95em;
-    line-height: 1.5;
-    color: #444;
-}
-
-.featured-post .read-more {
-    display: inline-block;
-    margin: 0 15px 20px 15px;
-    padding: 8px 15px;
-    background-color: #004080; /* Ink blue */
-    color: #fff;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-}
-
-.featured-post .read-more:hover {
-    background-color: #003366; /* Darker blue */
-    text-decoration: none;
-    border-bottom: none; /* Remove nav hover effect if it gets inherited */
-}
-
-
-/* Journal Feed */
-#journal-feed {
-    margin-bottom: 40px;
-}
-
-#journal-feed h2 {
-    text-align: center;
+    max-height: 400px; 
+    object-fit: cover;
+    border-radius: 6px;
     margin-bottom: 25px;
 }
 
-.feed-scroll {
-    max-height: 400px; /* Adjust as needed */
-    overflow-y: auto;
-    padding: 15px;
-    background: #fffaf0;
-    border: 1px solid #eee;
-    border-radius: 8px;
+.post-title { 
+    font-size: 2.8rem; 
+    color: var(--text-color-headings);
+    margin-bottom: 0.3em;
+    line-height: 1.2;
 }
 
-.feed-item {
-    padding: 15px 0;
-    border-bottom: 1px dashed #ddd;
+.post-meta {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-color-body);
+    opacity: 0.8;
+    margin-bottom: 0.25em;
+}
+.post-meta a {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+.post-meta a:hover {
+    color: var(--accent-color-hover);
 }
 
-.feed-item:last-child {
-    border-bottom: none;
+.post-reading-time {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-color-body);
+    opacity: 0.7;
+    margin-bottom: 0;
 }
 
-.feed-item h4 a {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25em;
-    color: #004080;
-    font-weight: normal;
-}
-.feed-item h4 a:hover {
-    color: #800000;
-    text-decoration: none;
-    border-bottom: 1px solid #800000;
+.post-body {
+    font-size: 1.1rem; 
+    line-height: 1.8;
+    color: var(--text-color-body);
 }
 
+.post-body h2 { 
+    font-size: 1.8rem;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border-color);
+}
 
-.feed-item .feed-date {
-    font-size: 0.8em;
-    color: #777;
-    margin-bottom: 5px;
+.post-body h3 {
+    font-size: 1.5rem;
+    margin-top: 1.8em;
+    margin-bottom: 0.8em;
+}
+
+.post-body p {
+    margin-bottom: 1.5em;
+}
+
+.post-body blockquote {
     font-style: italic;
+    color: var(--text-color-body);
+    opacity: 0.9;
+    padding: 15px 25px;
+    margin: 25px 0;
+    border-left: 3px solid var(--accent-color);
+    background-color: rgba(0, 0, 0, 0.1); /* Subtle darkening, less dependent on exact --bg-color */
+    border-radius: 0 4px 4px 0;
 }
 
-.feed-item p {
-    font-size: 0.95em;
-    color: #555;
+.post-body blockquote p {
+    margin-bottom: 0.5em;
 }
 
-/* Sidebar (Quote Box & Newsletter) */
-#sidebar {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #fffef7;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-.quote-box {
-    margin-bottom: 30px;
-    text-align: center;
-    padding: 20px;
-    background: #fffaf0;
-    border-left: 3px solid #004080; /* Ink blue accent */
-    border-radius: 4px;
-}
-
-.quote-box h3 {
-    margin-bottom: 10px;
-}
-
-.quote-box blockquote {
-    font-family: 'Merriweather', serif;
-    font-size: 1.1em;
-    color: #444;
-    font-style: italic;
-}
-
-.quote-box blockquote footer {
-    margin-top: 10px;
+.post-body blockquote footer {
+    display: block;
+    text-align: right;
     font-size: 0.9em;
-    color: #777;
-    background: none; /* Override default footer styles */
-    border-top: none;
-    padding: 0;
+    color: var(--text-color-body);
+    opacity: 0.7;
+    margin-top: 10px;
 }
 
-/* Newsletter Section */
-#subscribe {
-    text-align: center;
+.post-body ul, .post-body ol {
+    margin-bottom: 1.5em;
+    padding-left: 25px; 
+}
+.post-body ul li, .post-body ol li {
+    margin-bottom: 0.5em;
 }
 
-#subscribe h3 {
-    margin-bottom: 10px;
+.post-footer-meta {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-color-body);
+    opacity: 0.8;
 }
-
-#subscribe p {
-    margin-bottom: 20px;
-    font-size: 0.95em;
-    color: #555;
-}
-
-#newsletter-form input[type="email"] {
-    padding: 12px;
-    width: 70%;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.post-footer-meta a {
+    color: var(--accent-color);
     margin-right: 5px;
-    font-family: 'Inter', sans-serif;
 }
-
-#newsletter-form button {
-    padding: 12px 20px;
-    background-color: #800000; /* Muted accent */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+.post-footer-meta a:hover {
+    color: var(--accent-color-hover);
 }
-
-#newsletter-form button:hover {
-    background-color: #660000; /* Darker accent */
-}
-
-
-/* General layout adjustments for homepage with sidebar */
-@media (min-width: 992px) { /* Adjust breakpoint as needed */
-    .container {
-        display: grid;
-        grid-template-columns: 2fr 1fr; /* Main content and sidebar */
-        grid-template-areas:
-            "poetic poetic"
-            "featured featured"
-            "journal sidebar"
-            "footer-area footer-area"; /* if footer is inside container */
-        gap: 30px;
-    }
-
-    #poetic-intro { grid-area: poetic; }
-    #featured-blogs { grid-area: featured; }
-    #journal-feed { grid-area: journal; }
-    #sidebar { grid-area: sidebar; margin-top: 0; /* Reset margin for grid layout */ }
-    /* If footer is inside .container, assign it to footer-area */
-    /* main > .container + footer should handle footer outside container */
-}
-
 
 /* Blog Listing Page Styles */
-.page-header {
-    text-align: center;
-    margin: 30px 0 40px 0;
+.blog-listing-section {
+    /* padding-top: 0; site-main already has padding */
+    /* padding-bottom: 30px; site-main already has padding */
+}
+
+.page-header { /* Shared by other pages like About, Contact if needed */
+    margin-bottom: 40px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
+}
+.page-header .page-title { /* Class for h1 on listing, about, contact */
+    font-size: 2.8rem;
+    color: var(--text-color-headings);
+    margin-bottom: 0.2em;
+}
+.page-header .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color-body);
+    opacity: 0.8;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.page-header h1 {
-    font-size: 2.8em;
-    margin-bottom: 5px;
+/* Re-using .featured-grid and card styles for blog listing */
+/* .blog-grid selector is used in blog.html, styled like .featured-grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px; /* Space before pagination */
 }
 
-.page-header p {
-    font-size: 1.1em;
-    color: #666;
-    font-family: 'Merriweather', serif;
+/* .blog-post-card selector is used in blog.html, styled like .featured-post-card */
+/* Most styles are inherited from the shared card styles defined in Homepage section.
+   Only add specific overrides or additional styles for blog listing cards if necessary.
+*/
+.blog-post-card .card-meta { /* Specific meta for blog listing cards */
+    font-size: 0.85rem;
+    color: var(--text-color-body);
+    opacity: 0.7;
+    margin-bottom: 0.8em;
+    font-family: var(--font-body);
 }
 
-#blog-filters {
-    text-align: center;
-    margin-bottom: 30px;
-}
 
-.filter-btn {
-    background-color: transparent;
-    border: 1px solid #004080; /* Ink blue */
-    color: #004080;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border-radius: 20px; /* Pill shape */
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
+/* Pagination Styles */
+.pagination {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+.pagination a { /* General style for all pagination links */
+    color: var(--text-color-body);
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.pagination a:hover,
+.pagination a.current { /* Style for hover and current page */
+    background-color: var(--accent-color);
+    color: var(--bg-color); /* High contrast for selected/hover */
+    border-color: var(--accent-color);
+    text-decoration: none;
+}
+.pagination a.current {
     font-weight: bold;
-    transition: all 0.3s ease;
+    /* Prevent hover effect from reverting current page style if not specific enough */
+    background-color: var(--accent-color) !important; 
+    color: var(--bg-color) !important;
+    border-color: var(--accent-color) !important;
 }
 
-.filter-btn:hover, .filter-btn.active {
-    background-color: #004080; /* Ink blue */
-    color: #fffdf6; /* Parchment like text color for contrast */
+/* About Page Styles */
+.about-section {
+    /* site-main already has padding, so this section might not need its own top/bottom padding */
 }
 
-#blog-grid-container {
+.about-content {
+    background-color: var(--card-bg-color);
+    padding: 30px 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    margin-top: 20px; /* Space below page header */
+}
+
+.author-portrait {
+    width: 150px; /* Adjust size as needed */
+    height: 150px;
+    border-radius: 50%; /* Circular portrait */
+    object-fit: cover;
+    margin: 0 auto 30px auto; /* Center the image */
+    display: block;
+    border: 3px solid var(--border-color);
+}
+
+.about-content h2 {
+    font-size: 1.8rem;
+    color: var(--text-color-headings);
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border-color);
+}
+.about-content h2:first-of-type { /* For the first h2 after the image */
+    margin-top: 0;
+}
+
+.about-content p {
+    font-size: 1.05rem; /* Slightly smaller than post-body for dense text */
+    line-height: 1.7;
+    color: var(--text-color-body);
+    margin-bottom: 1.2em;
+}
+
+.about-content a { /* Links within about content */
+    color: var(--accent-color);
+    font-weight: 600; /* Make links stand out a bit more */
+}
+.about-content a:hover {
+    text-decoration: underline;
+    color: var(--accent-color-hover);
+}
+
+/* Contact Page Styles */
+.contact-section {
+    /* Uses .container-narrow for overall width constraint */
+}
+
+.contact-content-wrapper {
+    background-color: var(--card-bg-color);
+    padding: 30px 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    margin-top: 20px; /* Space below page header */
+}
+
+.contact-heading {
+    font-size: 1.6rem;
+    color: var(--text-color-headings);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.contact-form-container {
     margin-bottom: 40px;
 }
 
-.blog-grid {
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-color-body);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-color); /* Darker background for inputs */
+    color: var(--text-color-body);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb, 72, 138, 153), 0.3); /* Accent glow. Add --accent-color-rgb to :root */
+    outline: none;
+}
+/* Add to :root: --accent-color-rgb: 72, 138, 153; */
+
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form .submit-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--accent-color);
+    color: var(--bg-color); /* High contrast text for button */
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form .submit-btn:hover {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+}
+
+.contact-info-container p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.contact-methods {
+    list-style: none;
+    padding-left: 0;
+}
+.contact-methods li {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+.contact-methods li strong {
+    color: var(--text-color-headings);
+    margin-right: 5px;
+}
+.contact-methods ul { /* Nested list for social media */
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 0; /* Remove default ul margin */
+}
+.contact-methods ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+.contact-methods a {
+    color: var(--accent-color);
+}
+.contact-methods a:hover {
+    color: var(--accent-color-hover);
+}
+
+/* Responsive Design Adjustments */
+
+/* Medium screens (tablets, larger phones) */
+@media (max-width: 992px) {
+    :root {
+        --header-height: 60px; /* Slightly smaller header */
+    }
+    .container, .container-narrow {
+        width: 90%;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.15rem;
+    }
+    .section-title, .page-header .page-title, .post-title {
+        font-size: 2rem; /* Adjusted for post-title as well */
+    }
+    .card-title {
+        font-size: 1.3rem;
+    }
+    .post-body {
+        font-size: 1.05rem;
+    }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+    .site-header .container {
+        flex-direction: column;
+        justify-content: center; /* Center items when stacked */
+        height: auto; /* Allow header to grow if needed */
+        padding: 15px 0; /* Add padding when stacked */
+    }
+    .site-header { /* Adjust header height for stacked nav */
+        height: auto; 
+        position: static; /* Static might be better for simple stacked nav */
+    }
+    .site-logo {
+        margin-bottom: 15px;
+    }
+    .main-navigation ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .main-navigation ul li a {
+        display: block; /* Make links take full width for easier tapping */
+        padding: 8px 0; /* Add some padding to stacked links */
+        text-align: center;
+    }
+    .main-navigation ul li a::after { /* Remove underline effect for stacked nav */
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .section-title, .page-header .page-title, .post-title {
+        font-size: 1.8rem;
+    }
+    h1 {font-size: 2rem;} /* General h1 */
+    h2 {font-size: 1.6rem;} /* General h2 */
+    h3 {font-size: 1.4rem;} /* General h3 */
+
+    .featured-grid, .blog-grid {
+        grid-template-columns: 1fr; /* Single column for cards */
+        gap: 20px;
+    }
+    .card-content, .post-full-content, .about-content, .contact-content-wrapper {
+        padding: 20px; /* Reduced padding for cards/content on small screens */
+    }
+    .post-title { /* Specifically target post page title if needed more */
+        font-size: 2.2rem; /* Slightly larger than other h1s on mobile */
+    }
+    .post-body {
+        font-size: 1rem;
+    }
+     .post-body h2 { font-size: 1.5rem; }
+     .post-body h3 { font-size: 1.3rem; }
+
+    .pagination a {
+        padding: 6px 10px;
+        margin: 0 2px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small screens (older phones, if needed) */
+@media (max-width: 480px) {
+    .container, .container-narrow {
+        width: 95%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .site-main {
+        padding: 15px 0; /* Reduced main padding */
+    }
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    .section-title, .page-header .page-title, .post-title {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+     .post-title { /* Specifically target post page title */
+        font-size: 1.9rem; 
+    }
+    .card-title {
+        font-size: 1.2rem;
+    }
+    .card-excerpt, .read-more-btn {
+        font-size: 0.9rem;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea,
+    .contact-form .submit-btn {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+    .contact-form .submit-btn {
+        width: 100%; /* Full width button */
+    }
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul, ol {
+    list-style-position: inside; /* Default, can be overridden */
+    margin-bottom: 1.25em; /* Consistent spacing */
+ /* padding-left: 20px; Let specific contexts define this if needed */
+}
+ul li, ol li {
+    margin-bottom: 0.5em; /* Spacing between list items */
+}
+
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* 4. Header and Navigation Styling */
+.site-header {
+    background-color: var(--bg-color); 
+    padding: 0 15px; /* Remove top/bottom padding, use height */
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    display: flex; /* For vertical alignment of inner container */
+    align-items: center; /* For vertical alignment of inner container */
+}
+
+.site-header .container { /* Ensure container fills header height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Make container take full width of header padding box */
+}
+
+.site-logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color-headings);
+    text-decoration: none;
+}
+.site-logo:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.main-navigation ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0; /* Override default ul margin */
+    display: flex;
+    gap: 25px;
+}
+
+.main-navigation ul li a {
+    font-family: var(--font-body); 
+    font-size: 1rem;
+    font-weight: 600; 
+    color: var(--text-color-body);
+    text-decoration: none;
+    padding-bottom: 5px; 
+    position: relative;
+}
+
+.main-navigation ul li a:hover,
+.main-navigation ul li a.active { 
+    color: var(--accent-color-hover);
+    text-decoration: none;
+}
+
+.main-navigation ul li a::after { 
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color-hover);
+    transition: width 0.3s ease;
+}
+
+.main-navigation ul li a:hover::after,
+.main-navigation ul li a.active::after {
+    width: 100%;
+}
+
+
+/* 5. Footer Styling */
+.site-footer {
+    background-color: var(--bg-color); 
+    color: var(--text-color-body);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto; 
+}
+
+.site-footer p {
+    margin-bottom: 0.5em;
+    opacity: 0.8; 
+}
+
+/* Utility Classes (optional, can add as needed) */
+.text-center {
+    text-align: center;
+}
+
+.sr-only { /* For screen readers only */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Placeholder for more specific styles */
+/* Styles for homepage, blog posts etc. will be appended after this. */
+
+/* Homepage Specific Styles */
+
+/* Hero Introduction Section */
+.hero-intro-section {
+    padding-top: 30px; 
+    padding-bottom: 30px;
+    background-color: var(--bg-color); 
+    margin-bottom: 0; 
+}
+
+.hero-title {
+    font-size: 3rem; 
+    color: var(--text-color-headings);
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-color-body);
+    max-width: 700px; 
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Featured Posts Section */
+.featured-posts-section {
+    padding-top: 30px; 
+    padding-bottom: 30px;
+}
+
+.section-title { /* Can be reused on other pages */
+    font-size: 2.2rem;
+    color: var(--text-color-headings);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block; 
+}
+
+.section-title.text-center::after {
+    content: '';
+    display: block;
+    width: 60px; 
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0; 
+}
+
+
+.featured-grid { /* Can be reused as .blog-grid */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
-.blog-post-item {
-    background: #fffaf0; /* Creamy background for each post */
-    border: 1px solid #e0dacd; /* Subtle border */
+/* Card styles (reusable for .featured-post-card, .blog-post-card) */
+.featured-post-card, .blog-post-card { 
+    background-color: var(--card-bg-color);
     border-radius: 8px;
-    overflow: hidden; /* To make image corners follow border-radius */
-    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
-    display: flex;
-    flex-direction: column; /* Ensure content flows top to bottom */
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color); 
+    display: flex; 
+    flex-direction: column; 
 }
 
-.blog-post-item:hover {
+.featured-post-card:hover, .blog-post-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-.blog-post-item img {
+.card-link-wrapper { 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+    text-decoration: none;
+    color: inherit; 
+}
+.card-link-wrapper:hover {
+    text-decoration: none; 
+}
+
+
+.card-image {
     width: 100%;
-    height: 220px; /* Consistent image height */
-    object-fit: cover; /* Crop image nicely */
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.blog-post-item .post-content {
+.card-content {
     padding: 20px;
-    flex-grow: 1; /* Allows content to fill space, pushing button down */
     display: flex;
     flex-direction: column;
+    flex-grow: 1; 
 }
 
-.blog-post-item h3 {
-    font-size: 1.6em;
-    margin-bottom: 8px;
+.card-title {
+    font-size: 1.5rem;
+    color: var(--text-color-headings);
+    margin-bottom: 0.5em;
+    transition: color 0.3s ease;
 }
 
-.blog-post-item h3 a {
-    color: #004080; /* Ink blue */
-}
-.blog-post-item h3 a:hover {
-    color: #800000; /* Muted accent */
-    text-decoration: none;
-    border-bottom: 1px solid #800000;
+.featured-post-card:hover .card-title,
+.blog-post-card:hover .card-title {
+    color: var(--accent-color);
 }
 
-
-.blog-post-item .post-meta {
-    font-size: 0.85em;
-    color: #777;
-    margin-bottom: 15px;
-    font-family: 'Inter', sans-serif;
-}
-
-.blog-post-item .post-snippet {
-    font-size: 0.95em;
+.card-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-color-body);
     line-height: 1.6;
-    color: #444;
-    margin-bottom: 20px;
-    flex-grow: 1; /* Pushes button to bottom if content is short */
+    margin-bottom: 1em;
+    opacity: 0.85;
+    flex-grow: 1; 
 }
 
 .read-more-btn {
     display: inline-block;
-    align-self: flex-start; /* Align button to the left */
-    padding: 10px 18px;
-    background-color: #800000; /* Muted accent color */
-    color: #fff;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-    margin-top: auto; /* Pushes button to the bottom */
-}
-
-.read-more-btn:hover {
-    background-color: #660000; /* Darker accent */
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
     text-decoration: none;
-    border-bottom: none; /* Remove nav hover effect if it gets inherited */
+    padding-top: 0.5em; 
+    margin-top: auto; 
+    transition: color 0.3s ease;
 }
 
-/* Responsive adjustments for blog grid if needed, but auto-fit usually handles it well */
-/* Example: Switch to single column on very small screens if minmax doesn't suffice */
-@media (max-width: 480px) {
-    .blog-grid {
-        grid-template-columns: 1fr; /* Single column */
-    }
-    .filter-btn {
-        padding: 8px 15px;
-        margin: 5px 3px; /* More spacing for smaller buttons */
-        font-size: 0.9em;
-    }
-}
-
-
-/* Placeholder for script.js if needed in the future */
-/* For now, we'll create an empty file to avoid 404 errors */
-
-
-/* Individual Blog Post Page Styles */
-.blog-post-full {
-    max-width: 800px; /* Optimal reading width */
-    margin: 20px auto; /* Center the post content */
-    padding: 20px;
-    background-color: #fffdf6; /* Parchment background, or #fff for cleaner look */
-    border: 1px solid #e0dacd;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.post-full-header {
-    margin-bottom: 30px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-}
-
-.post-full-banner {
-    width: 100%;
-    max-height: 450px; /* Control banner height */
-    object-fit: cover;
-    border-radius: 6px; /* Slightly rounded corners for banner */
-    margin-bottom: 25px;
-}
-
-.post-full-title {
-    font-size: 2.8em; /* Large, impactful title */
-    color: #004080; /* Ink blue */
-    margin-bottom: 10px;
-    line-height: 1.2;
-}
-
-.post-full-meta {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 0;
-}
-
-.post-full-meta a {
-    color: #800000; /* Muted accent */
-    font-weight: bold;
-}
-.post-full-meta a:hover {
+.featured-post-card:hover .read-more-btn,
+.blog-post-card:hover .read-more-btn {
+    color: var(--accent-color-hover);
     text-decoration: underline;
-    border-bottom: none;
-}
-
-
-.post-full-content {
-    font-family: 'Merriweather', serif; /* Good for readability */
-    font-size: 1.1em; /* Slightly larger for comfortable reading */
-    line-height: 1.8;
-    color: #333; /* Dark gray for text */
-}
-
-.post-full-content h2 {
-    font-size: 1.8em;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #e0dacd; /* Subtle separator for headings */
-}
-
-.post-full-content p {
-    margin-bottom: 1.5em;
-}
-
-.post-full-content blockquote {
-    font-style: italic;
-    color: #555;
-    padding: 15px 25px;
-    margin: 25px 0;
-    border-left: 4px solid #004080; /* Ink blue accent */
-    background-color: #fffaf0; /* Slightly off-white background for quote */
-    border-radius: 0 4px 4px 0;
-}
-
-.post-full-content blockquote footer {
-    display: block;
-    text-align: right;
-    font-size: 0.9em;
-    color: #777;
-    margin-top: 10px;
-    background: none;
-    border: none;
-    padding: 0;
-}
-
-.post-full-content hr.section-break {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
-    margin: 40px 0;
-}
-
-/* Related Posts Section */
-.related-posts {
-    margin-top: 50px;
-    padding-top: 30px;
-    border-top: 1px solid #eee;
-}
-
-.related-posts h2 {
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 30px;
-    color: #004080;
-}
-
-.related-posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.related-post-item {
-    background: #fffaf0;
-    border: 1px solid #e0dacd;
-    border-radius: 6px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.related-post-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-}
-
-
-.related-post-item img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-
-.related-post-item h3 {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-}
-.related-post-item h3 a {
-    color: #004080;
-}
-.related-post-item h3 a:hover {
-    color: #800000;
-    text-decoration: none;
-    border-bottom: 1px solid #800000;
-}
-
-.related-post-item p {
-    font-size: 0.9em;
-    color: #555;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-}
-
-/* Comments Section */
-#comments-section {
-    margin-top: 50px;
-    padding-top: 30px;
-    border-top: 1px solid #eee;
-}
-
-#comments-section h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: #004080;
-}
-#comments-section h3 { /* For "Leave a Comment" */
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: #004080;
-}
-
-
-.comment-list .comment {
-    background: #fffaf0;
-    border: 1px solid #e0dacd;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-}
-
-.comment-author {
-    font-weight: bold;
-    color: #004080;
-    margin-bottom: 3px;
-}
-
-.comment-date {
-    font-size: 0.8em;
-    color: #777;
-    margin-bottom: 8px;
-}
-
-.comment p:last-child {
-    margin-bottom: 0;
-}
-
-#comment-form div {
-    margin-bottom: 15px;
-}
-
-#comment-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-family: 'Inter', sans-serif;
-    color: #444;
-}
-
-#comment-form input[type="text"],
-#comment-form input[type="email"],
-#comment-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1em;
-}
-
-#comment-form textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-#comment-form button {
-    padding: 12px 25px;
-    background-color: #004080; /* Ink blue */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-#comment-form button:hover {
-    background-color: #003366; /* Darker blue */
-}
-
-/* Responsive adjustments for post page */
-@media (max-width: 768px) {
-    .post-full-title {
-        font-size: 2.2em;
-    }
-    .post-full-content {
-        font-size: 1em;
-    }
-    .post-full-content h2 {
-        font-size: 1.6em;
-    }
-    .related-posts-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    .blog-post-full {
-        padding: 15px;
-    }
-    .post-full-title {
-        font-size: 1.8em;
-    }
-    .post-full-meta {
-        font-size: 0.8em;
-    }
-    .related-posts-grid {
-        grid-template-columns: 1fr; /* Single column for related posts */
-    }
-}
-
-/* General Responsive Adjustments */
-@media (max-width: 768px) {
-    nav .container { /* Target the container within nav */
-        flex-direction: column; /* Stack logo and nav list */
-        align-items: center;
-    }
-    #logo {
-        margin-bottom: 15px; /* Space below logo when stacked */
-    }
-    nav ul {
-        padding-left: 0; /* Reset padding if any from inline display */
-        width: 100%; /* Allow ul to take full width for centering or stacking */
-        text-align: center; /* Center the list items block */
-    }
-    nav ul li {
-        display: block; /* Stack list items */
-        margin: 10px 0; /* Add vertical spacing */
-        /* text-align: center; Already handled by text-align on ul */
-    }
-    nav ul li a:hover {
-        border-bottom: none; /* Optional: remove hover underline for stacked mobile nav */
-    }
-
-    .container {
-        width: 90%; /* More screen width on smaller devices */
-        /* padding: 0 15px; This might conflict with specific container paddings, be careful */
-    }
-
-    /* General heading adjustments - be mindful of overrides */
-    h1:not(.post-full-title) { /* Avoid double-styling post title if it has its own query */
-        font-size: 2em; 
-    }
-    h2 {
-        font-size: 1.6em;
-    }
-
-    /* Homepage specific adjustments for stacking journal and sidebar */
-    @media (max-width: 991px) { /* Ensure this fires before the 768px for .container grid */
-        /* Overwrite the 2-column grid layout for homepage on smaller screens */
-        .container { /* Reset grid for homepage container if it was set to grid */
-            display: block; /* Back to block layout */
-        }
-        #journal-feed, #sidebar {
-            grid-area: unset !important; /* Clear grid area names */
-            width: 100%; /* Make them full width */
-            margin-top: 30px; /* Add spacing between them */
-        }
-         #sidebar {
-            margin-top: 40px; /* Keep original sidebar margin if stacking */
-        }
-    }
-}
-
-@media (max-width: 480px) {
-    h1:not(.post-full-title) {
-        font-size: 1.8em; 
-    }
-    h2 {
-        font-size: 1.4em;
-    }
-    /* Reduce padding further on very small screens for key elements */
-    .featured-post { /* Adjust padding inside featured post card */
-        padding: 10px; 
-    }
-    .featured-post h3, .featured-post p, .featured-post .read-more {
-        margin-left: 0; /* Reset specific margins if parent padding handles it */
-        margin-right: 0;
-    }
-    .featured-post img {
-        height: 180px; /* Slightly reduce image height */
-    }
-     .blog-post-item .post-content {
-        padding: 15px;
-    }
-    #newsletter-form input[type="email"] {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    #newsletter-form button {
-        width: 100%;
-    }
-    .filter-btn {
-        display: block; /* Stack filter buttons */
-        width: 80%;
-        margin: 8px auto; /* Center them */
-    }
 }
